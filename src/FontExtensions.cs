@@ -1,4 +1,4 @@
-﻿namespace Oryn.Maui.Font.MaterialIcons;
+﻿namespace HandKit.Maui.MaterialIcons;
 
 /// <summary>
 /// Provides extension methods for adding Material Icons fonts to an IFontCollection.
@@ -6,26 +6,22 @@
 public static class FontExtensions
 {
     /// <summary>
+    /// Use Material Icons in the application.
+    /// <code>
+    /// Default name is "Icon"
     /// Add font to global. using: FontFamily="Icon" (Icon or IconFilled)
+    /// </code>
     /// </summary>
-    /// <param name="fonts">The IFontCollection to add fonts to.</param>
-    /// <returns>The updated IFontCollection with Material Icons fonts added.</returns>
-    public static IFontCollection AddMaterialIconsFonts(this IFontCollection fonts)
+    /// <param name="builder">The MauiAppBuilder instance.</param>
+    /// <param name="name">The name of the font family. Default is "Icon".</param>
+    /// <returns>The updated MauiAppBuilder instance.</returns>
+    public static MauiAppBuilder UseMaterialIcons(this MauiAppBuilder builder, string name = "Icon")
     {
-        fonts.AddFont("MaterialSymbolsOutlined.ttf", FontAliases.MaterialIcon);
-        fonts.AddFont("MaterialSymbolsOutlinedFilled.ttf", FontAliases.MaterialIconFilled);
-        return fonts;
-    }
-
-    /// <summary>
-    /// Add font to partial. using: FontFamily="MaterialIcon" (MaterialIcon or MaterialIconFilled)
-    /// </summary>
-    /// <param name="fonts">The IFontCollection to add fonts to.</param>
-    /// <returns>The updated IFontCollection with Material Icons fonts added.</returns>
-    public static IFontCollection AddMaterialIconsFontsPartial(this IFontCollection fonts)
-    {
-        fonts.AddFont("MaterialSymbolsOutlined.ttf", nameof(FontAliases.MaterialIcon));
-        fonts.AddFont("MaterialSymbolsOutlinedFilled.ttf", nameof(FontAliases.MaterialIconFilled));
-        return fonts;
+        builder.ConfigureFonts(fonts =>
+        {
+            fonts.AddFont("MaterialSymbolsOutlined.ttf", name);
+            fonts.AddFont("MaterialSymbolsOutlinedFilled.ttf", $"{name}Filled");
+        });
+        return builder;
     }
 }

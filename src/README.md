@@ -1,76 +1,107 @@
+# HandKit.Maui.MaterialIcons
 
-# Oryn.Maui.Font.MaterialIcons
+![icon](https://handityo.my.id/icon_nuget.png)
 
-**A comprehensive Material Icons font library for MAUI C# applications.**
+[![NuGet](https://img.shields.io/nuget/v/HandKit.Maui.MaterialIcons)](https://www.nuget.org/packages/HandKit.Maui.MaterialIcons)
+[![.NET MAUI](https://img.shields.io/badge/.NET%20MAUI-512BD4?style=flat&logo=dotnet&label=.NET%20MAUI)](https://dotnet.microsoft.com/en-us/apps/maui)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[![Platform](https://img.shields.io/badge/Platform-Android-green)](https://www.android.com/)
+[![Platform](https://img.shields.io/badge/Platform-iOS-blue)](https://www.apple.com/ios/ios-16/)
+[![Platform](https://img.shields.io/badge/Platform-Windows-0078D7)](https://www.microsoft.com/en-us/windows)
+[![Platform](https://img.shields.io/badge/Platform-macOS-00203a)](https://www.apple.com/macos/)
+
+**A comprehensive Material Icons font library for .NET MAUI applications.**
 
 ## Overview
-This repository provides a convenient way to incorporate Google's Material Icons into your MAUI C# projects. Whether you're building mobile, desktop, or web applications, this library offers a wide range of icons to enhance your user interface.
+
+This library provides a seamless way to integrate Google's Material Icons (Outlined and Filled) into your .NET MAUI projects.
 
 ## Features
-* **Easy to use:** Seamless integration into your MAUI projects.
-* **Comprehensive:** Includes a vast collection of Material Icons.
-* **Customizable:** Customize the appearance of icons to match your branding.
-* **Performance optimized:** Ensures smooth performance in your applications.
 
+*   **Easy Integration:** Simple registration method in `MauiProgram.cs`.
+*   **Dual Styles:** Includes both **Outlined** and **Filled** variants of Material Symbols.
+*   **Customizable Alias:** Support for custom font family aliases to avoid conflicts.
+*   **Broad Compatibility:** Supports Android, iOS, macOS, and Windows.
 
 ## Installation
 
-You can install the plugin via NuGet:
+Install the package via NuGet:
 
 ```bash
-Install-Package Oryn.Maui.Font.MaterialIcons
+Install-Package HandKit.Maui.MaterialIcons
 ```
 
 ## Usage
 
-1.  **Register the font:**
+### 1. Register the Fonts
 
-    In your `MauiProgram.cs` file:
+In your `MauiProgram.cs`, call `UseMaterialIcons()` on the `MauiAppBuilder`:
 
-    ```csharp
-    using Oryn.Maui.Font.MaterialIcons;
+```csharp
+using HandKit.Maui.MaterialIcons; // Add this namespace
 
-    public static class MauiProgram
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-					fonts.AddMaterialIconsFonts(); // <-- add this
-                });
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .UseMaterialIcons() // <-- Register the fonts here
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
-            return builder.Build();
-        }
+        return builder.Build();
     }
-    ```
+}
+```
 
-2.  **Use the font in XAML:**
+By default, this registers the fonts with the alias `"Icon"`.
 
-    ```xml
-    <Label Text="notifications" FontFamily="Icon" FontSize="32" />
-    <Label Text="notifications" FontFamily="IconFilled" FontSize="32" />
-    ```
+### 2. Use in XAML
 
-    Or with *Style*:
+You can use the fonts by referencing the `FontFamily`.
 
-    ```xml
-    <Style TargetType="Label" x:Key="IconLabelStyle">
-        <Setter Property="FontFamily" Value="Icon"/>
-        <Setter Property="FontSize" Value="32"/>
-    </Style>
+#### Default Aliases:
+*   **Outlined:** `Icon`
+*   **Filled:** `IconFilled`
 
-    <Label Text="notifications" Style="{StaticResource IconLabelStyle}"/>
-    ```
+```xml
+<!-- Outlined Icon -->
+<Label Text="notifications" 
+       FontFamily="Icon" 
+       FontSize="32" />
 
-## Example Project
+<!-- Filled Icon -->
+<Label Text="notifications" 
+       FontFamily="IconFilled" 
+       FontSize="32" />
+```
 
-The repository includes a sample MAUI project demonstrating the usage of the plugin. You can find it in the `samples` directory.
+### Advanced Usage (Custom Alias)
+
+If you prefer a different font family name, you can pass it to the `UseMaterialIcons` method:
+
+```csharp
+// Registers "MyIcon" and "MyIconFilled"
+builder.UseMaterialIcons("MyIcon");
+```
+
+Then in XAML:
+
+```xml
+<Label Text="home" FontFamily="MyIcon" FontSize="32" />
+<Label Text="home" FontFamily="MyIconFilled" FontSize="32" />
+```
 
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
+
+## Contact
+
+If you have any questions or suggestions, please feel free to contact me at andyapin@gmail.com

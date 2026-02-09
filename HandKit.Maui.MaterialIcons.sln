@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oryn.Maui.Font.MaterialIcons", "src\Oryn.Maui.Font.MaterialIcons.csproj", "{EBEA3AA4-896A-4BF1-8B50-B15FF1BED494}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandKit.Maui.MaterialIcons", "src\HandKit.Maui.MaterialIcons.csproj", "{EBEA3AA4-896A-4BF1-8B50-B15FF1BED494}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sample", "sample\sample.csproj", "{87AD6D11-EE94-4E98-BB5C-01EFCFDD90EE}"
 EndProject

@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0;net9.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net10.0;net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
 		<UseMaui>true</UseMaui>
@@ -20,13 +20,14 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Authors>Ibnu Hajar Handityo</Authors>
 		<Copyright>© andyapin - www.handityo.my.id</Copyright>
-		<PackageProjectUrl>https://github.com/andyapin/Oryn.Maui.Font.MaterialIcons</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/andyapin/Oryn.Maui.Font.MaterialIcons</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/andyapin/HandKit.Maui.MaterialIcons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/andyapin/HandKit.Maui.MaterialIcons</RepositoryUrl>
 		<PackageTags>plugin;toolkit;maui;font;android;ios;desktop;windows;mac</PackageTags>
 		<Description>Integrate Material Icons font family into .NET MAUI</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
-		<Version>1.0.4</Version>
+		<Version>1.0.0</Version>
+		<PackageVersion>1.0.0</PackageVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -36,13 +37,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="Oryn.Maui.Font.MaterialIcons.targets" Pack="True" PackagePath="buildTransitive\" />
+		<MauiFont Include="Resources\Fonts\*" />
+		<None Include="Resources\Fonts\MaterialSymbolsOutlined.ttf" Pack="True" PackagePath="buildTransitive\Fonts\" />
+		<None Include="Resources\Fonts\MaterialSymbolsOutlinedFilled.ttf" Pack="True" PackagePath="buildTransitive\Fonts\" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Include="HandKit.Maui.MaterialIcons.targets" Pack="True" PackagePath="buildTransitive\" />
 	</ItemGroup>
 	
 	<ItemGroup>
 		<MauiFont Include="Resources\Fonts\*" />
-		<None Include="Resources\Fonts\MaterialSymbolsOutlined.ttf" Pack="True" PackagePath="buildTransitive\Fonts\" />
-		<None Include="Resources\Fonts\MaterialSymbolsOutlinedFilled.ttf" Pack="True" PackagePath="buildTransitive\Fonts\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -52,7 +57,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 	</ItemGroup>
 
 </Project>
