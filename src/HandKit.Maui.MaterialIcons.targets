@@ -1,6 +1,6 @@
 ﻿<Project>
 	<ItemGroup>
-		<MauiFont Include="$(MSBuildThisFileDirectory)\Fonts\MaterialSymbolsOutlined.ttf" />
-		<MauiFont Include="$(MSBuildThisFileDirectory)\Fonts\MaterialSymbolsOutlinedFilled.ttf" />
+		<MauiFont Include="$(MSBuildThisFileDirectory)Fonts\MaterialSymbolsOutlined.ttf" Link="Resources\Fonts\MaterialSymbolsOutlined.ttf" />
+		<MauiFont Include="$(MSBuildThisFileDirectory)Fonts\MaterialSymbolsOutlinedFilled.ttf" Link="Resources\Fonts\MaterialSymbolsOutlinedFilled.ttf" />
 	</ItemGroup>
 </Project>
